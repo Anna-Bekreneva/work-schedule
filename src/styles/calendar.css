@@ -1,0 +1,59 @@
+.react-aria-Calendar {
+  width: fit-content;
+  max-width: 100%;
+  color: #bdbcbc;
+
+  header {
+    display: flex;
+    align-items: center;
+    margin: 0 4px 0.5rem;
+
+    .react-aria-Heading {
+      flex: 1;
+      margin: 0;
+      font-size: 1.375rem;
+      text-align: center;
+    }
+  }
+
+  .react-aria-Button {
+    width: 2rem;
+    height: 2rem;
+    padding: 0;
+  }
+
+  .react-aria-CalendarCell {
+    cursor: default;
+
+    width: 2rem;
+    margin: 1px;
+
+    line-height: 2rem;
+    text-align: center;
+
+    forced-color-adjust: none;
+    border-radius: 6px;
+    outline: none;
+
+    &[data-outside-month] {
+      display: none;
+    }
+
+    &[data-unavailable] {
+      color: #b20909;
+      text-decoration: line-through;
+    }
+
+    /* &[data-unavailable] { */
+
+    /*  text-decoration: line-through; */
+
+    /*  color: var(--invalid-color); */
+
+    /* } */
+
+    &[data-disabled] {
+      color: #626060;
+    }
+  }
+}

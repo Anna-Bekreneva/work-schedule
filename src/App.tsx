@@ -1,33 +1,60 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { MouseEvent, useState } from 'react'
+import DatePicker from 'react-datepicker'
+
+import { Calendar } from '@/features'
+
+import 'react-datepicker/dist/react-datepicker.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [lastWorkDate, setLastWorkDate] = useState(new Date())
+  const [workDays, setWorkDays] = useState(1)
+  const [restDays, setRestDays] = useState(3)
+
+  const [isShowCalendar, setIsShowCalendar] = useState(false)
+  const changeLastWorkDate = (date: Date) => setLastWorkDate(date)
+
+  const calcSchedule = (e: MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault()
+    setIsShowCalendar(true)
+  }
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+      <p>Чтобы расчитать ваш график, нам нужно знать некоторые детали:</p>
+      <form>
+        <div>
+          <label htmlFor={'works-day'}>Сколько дней вы работаете?</label>
+          <input
+            id={'works-day'}
+            max={30}
+            min={1}
+            onChange={e => setWorkDays(Number(e.currentTarget.value))}
+            type={'number'}
+            value={workDays}
+          />
+        </div>
+        <div>
+          <label htmlFor={'rest-day'}>Сколько дней вы отдыхаете?</label>
+          <input
+            id={'rest-day'}
+            max={30}
+            min={1}
+            onChange={e => setRestDays(Number(e.currentTarget.value))}
+            type={'number'}
+            value={restDays}
+          />
+        </div>
+        <div>
+          <label htmlFor={'last-work-day'}>Когда был ваш крайний рабочий день?</label>
+          <DatePicker id={'last-work-day'} onChange={changeLastWorkDate} selected={lastWorkDate} />
+        </div>
+        <button onClick={calcSchedule} type={'submit'}>
+          Рассчитать график
         </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      </form>
+      {isShowCalendar && (
+        <Calendar lastWorkDay={lastWorkDate} restDays={restDays} workDays={workDays} />
+      )}
     </>
   )
 }
