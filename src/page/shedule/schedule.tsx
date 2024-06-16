@@ -6,7 +6,7 @@ export const Schedule = () => {
   const {changeLastWorkDate, calcSchedule, setWorksHandle, restDays, workDays, lastWorkDate, restDaysHandle, isShowCalendar} = useSchedule()
 
   return (
-    <>
+    <section className={'wrapper'}>
       <Form
         changeLastWorkDateHandle={changeLastWorkDate}
         submitFormHandle={calcSchedule}
@@ -23,6 +23,6 @@ export const Schedule = () => {
           workDays={workDays}
         />
       )}
-    </>
+    </section>
   )
 }

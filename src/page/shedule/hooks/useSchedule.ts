@@ -2,11 +2,14 @@ import {ChangeEvent, MouseEvent, useState} from "react";
 
 export const useSchedule = () => {
   const [lastWorkDate, setLastWorkDate] = useState(new Date())
-  const [workDays, setWorkDays] = useState(1)
+  console.log(lastWorkDate)
+  const [workDays, setWorkDays ] = useState(1)
   const [restDays, setRestDays] = useState(3)
 
   const [isShowCalendar, setIsShowCalendar] = useState(false)
-  const changeLastWorkDate = (date: Date) => setLastWorkDate(date)
+  const changeLastWorkDate = (date: Date) => {
+    setLastWorkDate(date)
+  } 
 
   const calcSchedule = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()

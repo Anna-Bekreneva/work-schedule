@@ -2,19 +2,20 @@ import {CalendarDate, DateValue, fromDate, getLocalTimeZone} from "@internationa
 import {CalendarProps} from "@/features/calendar";
 
 export const useCalendar = ({workDays, lastWorkDay, restDays}: CalendarProps) => {
+  const newDate = new Date(lastWorkDay)
   const now = new CalendarDate(
-    lastWorkDay.getFullYear(),
-    lastWorkDay.getMonth() + 1,
-    lastWorkDay.getDate()
+    newDate.getFullYear(),
+    newDate.getMonth() + 1,
+    newDate.getDate()
   )
 
   const minValue = fromDate(
-    new Date(lastWorkDay.setDate(lastWorkDay.getDate())),
+    new Date(newDate.setDate(newDate.getDate())),
     getLocalTimeZone()
   )
 
   const maxValue = fromDate(
-    new Date(lastWorkDay.setFullYear(lastWorkDay.getFullYear() + 1)),
+    new Date(newDate.setFullYear(newDate.getFullYear() + 1)),
     getLocalTimeZone()
   )
 

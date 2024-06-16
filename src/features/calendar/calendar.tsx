@@ -16,6 +16,7 @@ export type CalendarProps = {
 }
 export const Calendar = (props: CalendarProps) => {
 
+
   const {isDateUnavailable, maxValue, minValue} = useCalendar({...props})
 
   return (
@@ -26,7 +27,7 @@ export const Calendar = (props: CalendarProps) => {
         isReadOnly
         maxValue={maxValue}
         minValue={minValue}
-        visibleDuration={{ months: 1 }}
+        visibleDuration={{ months: 3 }}
       >
         <header>
           <Button slot={'previous'}>◀</Button>
@@ -34,7 +35,9 @@ export const Calendar = (props: CalendarProps) => {
           <Button slot={'next'}>▶</Button>
         </header>
         <div style={{ display: 'flex', gap: 30, overflow: 'auto' }}>
-          <CalendarGrid>{date => <CalendarCell date={date} />}</CalendarGrid>
+          <CalendarGrid offset={{ months: 1 }}>{date => <CalendarCell date={date} />}</CalendarGrid>
+          <CalendarGrid offset={{ months: 2 }}>{date => <CalendarCell date={date} />}</CalendarGrid>
+          <CalendarGrid offset={{ months: 3 }}>{date => <CalendarCell date={date} />}</CalendarGrid>
         </div>
       </YearCalendar>
     </I18nProvider>

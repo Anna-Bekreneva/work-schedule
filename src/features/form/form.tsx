@@ -13,37 +13,39 @@ type Props = {
 }
 export const Form = ({workDays, restDays, lastWorkDate, restDaysHandle, changeLastWorkDateHandle, setWorksHandle, submitFormHandle}: Props) => {
   return (
-    <form>
-      <p>Чтобы расчитать ваш график, нам нужно знать некоторые детали:</p>
-      <div>
-        <label htmlFor={'works-day'}>Сколько дней вы работаете?</label>
-        <input
-          id={'works-day'}
-          max={30}
-          min={1}
-          onChange={setWorksHandle}
-          type={'number'}
-          value={workDays}
-        />
+    <form className={'form'}>
+      <h2 className={'form__title'}>Чтобы расчитать ваш график, нам нужно знать некоторые детали:</h2>
+      <div className={'form__content'}>
+        <div className={'form__item'}>
+          <label htmlFor={'works-day'}>Сколько дней вы работаете?</label>
+          <input
+            id={'works-day'}
+            max={30}
+            min={1}
+            onChange={setWorksHandle}
+            type={'number'}
+            value={workDays}
+          />
+        </div>
+        <div className={'form__item'}>
+          <label htmlFor={'rest-day'}>Сколько дней вы отдыхаете?</label>
+          <input
+            id={'rest-day'}
+            max={30}
+            min={1}
+            onChange={restDaysHandle}
+            type={'number'}
+            value={restDays}
+          />
+        </div>
+        <div className={'form__item'}>
+          <label htmlFor={'last-work-day'}>Когда был ваш крайний рабочий день?</label>
+          <DatePicker id={'last-work-day'} onChange={changeLastWorkDateHandle} selected={lastWorkDate}/>
+        </div>
+        <button onClick={submitFormHandle} type={'submit'}>
+          Рассчитать график
+        </button>
       </div>
-      <div>
-        <label htmlFor={'rest-day'}>Сколько дней вы отдыхаете?</label>
-        <input
-          id={'rest-day'}
-          max={30}
-          min={1}
-          onChange={restDaysHandle}
-          type={'number'}
-          value={restDays}
-        />
-      </div>
-      <div>
-        <label htmlFor={'last-work-day'}>Когда был ваш крайний рабочий день?</label>
-        <DatePicker id={'last-work-day'} onChange={changeLastWorkDateHandle} selected={lastWorkDate}/>
-      </div>
-      <button onClick={submitFormHandle} type={'submit'}>
-        Рассчитать график
-      </button>
     </form>
   )
 }
