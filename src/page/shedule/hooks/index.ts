@@ -1,1 +1,1 @@
-export {useSchedule} from './useSchedule'
+export { useSchedule } from './useSchedule'

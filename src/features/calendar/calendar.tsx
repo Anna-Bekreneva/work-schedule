@@ -7,7 +7,7 @@ import {
   Calendar as YearCalendar,
 } from 'react-aria-components'
 
-import {useCalendar} from "./hooks";
+import { useCalendar } from './hooks'
 
 export type CalendarProps = {
   lastWorkDay: Date
@@ -15,9 +15,7 @@ export type CalendarProps = {
   workDays: number
 }
 export const Calendar = (props: CalendarProps) => {
-
-
-  const {isDateUnavailable, maxValue, minValue} = useCalendar({...props})
+  const { isDateUnavailable, maxValue, minValue } = useCalendar({ ...props })
 
   return (
     <I18nProvider locale={'ru-RU'}>

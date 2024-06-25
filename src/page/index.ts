@@ -1,1 +1,1 @@
-export {Schedule} from './shedule'
+export { Schedule } from './shedule'

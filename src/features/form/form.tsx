@@ -1,6 +1,6 @@
-import {ChangeEvent, MouseEvent} from "react";
+import { ChangeEvent, MouseEvent } from 'react'
 import DatePicker from 'react-datepicker'
-import 'react-datepicker/dist/react-datepicker.css'
+import { Field } from '@/components'
 
 type Props = {
   workDays: number
@@ -11,38 +11,49 @@ type Props = {
   submitFormHandle: (e: MouseEvent<HTMLButtonElement>) => void
   changeLastWorkDateHandle: (date: Date) => void
 }
-export const Form = ({workDays, restDays, lastWorkDate, restDaysHandle, changeLastWorkDateHandle, setWorksHandle, submitFormHandle}: Props) => {
+export const Form = ({
+  workDays,
+  restDays,
+  lastWorkDate,
+  restDaysHandle,
+  changeLastWorkDateHandle,
+  setWorksHandle,
+  submitFormHandle,
+}: Props) => {
   return (
     <form className={'form'}>
-      <h2 className={'form__title'}>Чтобы расчитать ваш график, нам нужно знать некоторые детали:</h2>
+      <h2 className={'form__title'}>
+        Чтобы расчитать ваш график, нам нужно знать некоторые детали:
+      </h2>
       <div className={'form__content'}>
-        <div className={'form__item'}>
-          <label htmlFor={'works-day'}>Сколько дней вы работаете?</label>
-          <input
-            id={'works-day'}
-            max={30}
-            min={1}
-            onChange={setWorksHandle}
-            type={'number'}
-            value={workDays}
-          />
-        </div>
-        <div className={'form__item'}>
-          <label htmlFor={'rest-day'}>Сколько дней вы отдыхаете?</label>
-          <input
-            id={'rest-day'}
-            max={30}
-            min={1}
-            onChange={restDaysHandle}
-            type={'number'}
-            value={restDays}
-          />
-        </div>
+        <Field
+          label={'Сколько дней вы работаете?'}
+          id={'works-day'}
+          max={30}
+          min={1}
+          onChange={setWorksHandle}
+          type={'number'}
+          value={workDays}
+        />
+
+        <Field
+          label={'Сколько дней вы отдыхаете?'}
+          id={'rest-day'}
+          type={'number'}
+          max={30}
+          onChange={restDaysHandle}
+          value={restDays}
+          min={1}
+        />
         <div className={'form__item'}>
           <label htmlFor={'last-work-day'}>Когда был ваш крайний рабочий день?</label>
-          <DatePicker id={'last-work-day'} onChange={changeLastWorkDateHandle} selected={lastWorkDate}/>
+          <DatePicker
+            id={'last-work-day'}
+            onChange={changeLastWorkDateHandle}
+            selected={lastWorkDate}
+          />
         </div>
-        <button onClick={submitFormHandle} type={'submit'}>
+        <button className={'form__button'} onClick={submitFormHandle} type={'submit'}>
           Рассчитать график
         </button>
       </div>

@@ -13,12 +13,14 @@
   "dependencies": {
     "@internationalized/date": "^3.5.3",
     "@types/react-datepicker": "^6.2.0",
+    "@types/uuid": "^10.0.0",
     "dayjs": "^1.11.10",
     "react": "^18.2.0",
     "react-aria": "^3.33.0",
     "react-aria-components": "^1.2.0",
     "react-datepicker": "^6.9.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "uuid": "^10.0.0"
   },
   "devDependencies": {
     "@it-incubator/eslint-config": "^1.0.2",

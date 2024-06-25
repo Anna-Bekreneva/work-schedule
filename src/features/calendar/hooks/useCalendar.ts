@@ -1,18 +1,11 @@
-import {CalendarDate, DateValue, fromDate, getLocalTimeZone} from "@internationalized/date";
-import {CalendarProps} from "@/features/calendar";
+import { CalendarDate, DateValue, fromDate, getLocalTimeZone } from '@internationalized/date'
+import { CalendarProps } from '@/features/calendar'
 
-export const useCalendar = ({workDays, lastWorkDay, restDays}: CalendarProps) => {
+export const useCalendar = ({ workDays, lastWorkDay, restDays }: CalendarProps) => {
   const newDate = new Date(lastWorkDay)
-  const now = new CalendarDate(
-    newDate.getFullYear(),
-    newDate.getMonth() + 1,
-    newDate.getDate()
-  )
+  const now = new CalendarDate(newDate.getFullYear(), newDate.getMonth() + 1, newDate.getDate())
 
-  const minValue = fromDate(
-    new Date(newDate.setDate(newDate.getDate())),
-    getLocalTimeZone()
-  )
+  const minValue = fromDate(new Date(newDate.setDate(newDate.getDate())), getLocalTimeZone())
 
   const maxValue = fromDate(
     new Date(newDate.setFullYear(newDate.getFullYear() + 1)),
@@ -46,5 +39,5 @@ export const useCalendar = ({workDays, lastWorkDay, restDays}: CalendarProps) =>
       interval => date.compare(interval[0]) >= 0 && date.compare(interval[1]) <= 0
     )
 
-  return {isDateUnavailable, maxValue, minValue}
+  return { isDateUnavailable, maxValue, minValue }
 }

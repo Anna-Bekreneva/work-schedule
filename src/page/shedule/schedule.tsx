@@ -1,9 +1,17 @@
-import {Calendar, Form} from "@/features";
-import {useSchedule} from "./hooks";
+import { Calendar, Form } from '@/features'
+import { useSchedule } from './hooks'
 
 export const Schedule = () => {
-
-  const {changeLastWorkDate, calcSchedule, setWorksHandle, restDays, workDays, lastWorkDate, restDaysHandle, isShowCalendar} = useSchedule()
+  const {
+    changeLastWorkDate,
+    calcSchedule,
+    setWorksHandle,
+    restDays,
+    workDays,
+    lastWorkDate,
+    restDaysHandle,
+    isShowCalendar,
+  } = useSchedule()
 
   return (
     <section className={'wrapper'}>
@@ -17,11 +25,7 @@ export const Schedule = () => {
         restDaysHandle={restDaysHandle}
       />
       {isShowCalendar && (
-        <Calendar
-          lastWorkDay={lastWorkDate}
-          restDays={restDays}
-          workDays={workDays}
-        />
+        <Calendar lastWorkDay={lastWorkDate} restDays={restDays} workDays={workDays} />
       )}
     </section>
   )
