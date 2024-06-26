@@ -1,20 +1,15 @@
-import { I18nProvider } from 'react-aria'
-import {
-  Button,
-  CalendarCell,
-  CalendarGrid,
-  Heading,
-  Calendar as YearCalendar,
-} from 'react-aria-components'
+import {I18nProvider} from 'react-aria'
+import {Button, Calendar as YearCalendar, CalendarGrid, Heading,} from 'react-aria-components'
 
-import { useCalendar } from './hooks'
+import {useCalendar} from './hooks'
+import {CustomCalendarCell} from "@/components";
 
-export type CalendarProps = {
+export type Props = {
   lastWorkDay: Date
   restDays: number
   workDays: number
 }
-export const Calendar = (props: CalendarProps) => {
+export const Calendar = (props: Props) => {
   const { isDateUnavailable, maxValue, minValue } = useCalendar({ ...props })
 
   return (
@@ -24,8 +19,8 @@ export const Calendar = (props: CalendarProps) => {
         isDateUnavailable={isDateUnavailable}
         isReadOnly
         maxValue={maxValue}
-        minValue={minValue}
-        visibleDuration={{ months: 3 }}
+        value={minValue }
+        visibleDuration={{months: 3}}
       >
         <header>
           <Button slot={'previous'}>◀</Button>
@@ -33,9 +28,9 @@ export const Calendar = (props: CalendarProps) => {
           <Button slot={'next'}>▶</Button>
         </header>
         <div style={{ display: 'flex', gap: 30, overflow: 'auto' }}>
-          <CalendarGrid offset={{ months: 1 }}>{date => <CalendarCell date={date} />}</CalendarGrid>
-          <CalendarGrid offset={{ months: 2 }}>{date => <CalendarCell date={date} />}</CalendarGrid>
-          <CalendarGrid offset={{ months: 3 }}>{date => <CalendarCell date={date} />}</CalendarGrid>
+          <CalendarGrid>{date => <CustomCalendarCell date={date} minValue={minValue} />}</CalendarGrid>
+          <CalendarGrid offset={{months: 1}}>{date => <CustomCalendarCell date={date} minValue={minValue} />}</CalendarGrid>
+          <CalendarGrid offset={{months: 2}}>{date => <CustomCalendarCell date={date} minValue={minValue} />}</CalendarGrid>
         </div>
       </YearCalendar>
     </I18nProvider>

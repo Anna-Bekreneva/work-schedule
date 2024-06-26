@@ -2,7 +2,6 @@ import { ChangeEvent, MouseEvent, useState } from 'react'
 
 export const useSchedule = () => {
   const [lastWorkDate, setLastWorkDate] = useState(new Date())
-  console.log(lastWorkDate)
   const [workDays, setWorkDays] = useState(1)
   const [restDays, setRestDays] = useState(3)
 

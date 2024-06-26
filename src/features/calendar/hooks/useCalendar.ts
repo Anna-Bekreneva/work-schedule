@@ -1,7 +1,7 @@
 import { CalendarDate, DateValue, fromDate, getLocalTimeZone } from '@internationalized/date'
-import { CalendarProps } from '@/features/calendar'
+import { Props } from '@/features/calendar'
 
-export const useCalendar = ({ workDays, lastWorkDay, restDays }: CalendarProps) => {
+export const useCalendar = ({ workDays, lastWorkDay, restDays }: Props) => {
   const newDate = new Date(lastWorkDay)
   const now = new CalendarDate(newDate.getFullYear(), newDate.getMonth() + 1, newDate.getDate())
 
